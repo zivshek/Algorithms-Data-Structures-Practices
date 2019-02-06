@@ -34,7 +34,6 @@ function bubbleSort(arr) {
     
     let swapped = false;
     let currEndIndex = array.length - 1;
-    console.log("bubble sort started");
     let startTime = new Date();
     
     while (currEndIndex != 1) {
@@ -55,8 +54,7 @@ function bubbleSort(arr) {
     }
     
     let endTime = new Date();
-    console.log(`time used: ${endTime - startTime} ms`);
-    console.log("bubble sort finished"); 
+    console.log(`${arguments.callee.name} time used: ${endTime - startTime} ms`);
     return array;
 }
 
@@ -68,7 +66,6 @@ function selectionSort(arr) {
 
     let currStartIndex = 0;
 
-    console.log("selection sort started");
     let startTime = new Date();
 
     while (currStartIndex != array.length - 2){
@@ -86,8 +83,7 @@ function selectionSort(arr) {
     }
 
     let endTime = new Date();
-    console.log(`time used: ${endTime - startTime} ms`);
-    console.log("selection sort finished"); 
+    console.log(`${arguments.callee.name} time used: ${endTime - startTime} ms`);
 
     return array;
 }
@@ -98,7 +94,6 @@ function insertionSort(arr){
     if (array.length < 2)
         return array;
 
-    console.log("insertion sort started");
     let startTime = new Date();
 
     for (let i = 1; i < array.length; i++){
@@ -110,8 +105,7 @@ function insertionSort(arr){
     }
 
     let endTime = new Date();
-    console.log(`time used: ${endTime - startTime} ms`);
-    console.log("insertion sort finished"); 
+    console.log(`${arguments.callee.name} time used: ${endTime - startTime} ms`);
 
     return array;
 }
@@ -122,9 +116,16 @@ function heapSort(arr){
     if (array.length < 2)
         return array;
 
-    console.log("heap sort started");
     let startTime = new Date();
     
+}
+
+
+
+function allOfThem(array) {
+    bubbleSort(array);
+    selectionSort(array);
+    insertionSort(array);
 }
 
 
