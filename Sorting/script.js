@@ -1,5 +1,5 @@
-// helper functions
-function generateRandomArray(count, min, max) {
+// helpers
+function generateRandomArray(count, min = 0, max = 1000) {
     let array = new Array(count);
     for (let i = 0; i < count; i++) {
         array[i] = Math.floor(Math.random() * (max - min) + min);
@@ -15,8 +15,19 @@ function generateSortedArray(count) {
     return array;
 }
 
+function swap(array, i1, i2){
+    let temp = array[i1];
+    array[i1] = array[i2];
+    array[i2] = temp;
+}
+
+let sameRandomArray = generateRandomArray(1000);
+let sameSortedArray = generateSortedArray(1000);
+
 // sorting functions
-function bubbleSort(array) {
+function bubbleSort(arr) {
+    // copy the array so the original array won't get changed
+    let array = arr.slice();
     
     if (array.length < 2)
         return array;
@@ -30,10 +41,7 @@ function bubbleSort(array) {
 
         for (let i = 0; i < array.length; i++) {
             if (array[i] > array[i + 1]) {
-                let temp = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
-                
+                swap(array, i, i + 1);
                 swapped = true;
             }
         }
@@ -53,6 +61,70 @@ function bubbleSort(array) {
 }
 
 
-function selectionSort(array) {
+function selectionSort(arr) {
+    let array = arr.slice();
+    if (array.length < 2)
+        return array;
+
+    let currStartIndex = 0;
+
+    console.log("selection sort started");
+    let startTime = new Date();
+
+    while (currStartIndex != array.length - 2){
+
+        let smallestIndex = currStartIndex;
+        for (let i = currStartIndex; i < array.length; i++){
+            if (array[i] < array[smallestIndex]){
+                smallestIndex = i;
+            }
+        }
+
+        // swap with currStartIndex
+        swap(array, currStartIndex, smallestIndex);
+        currStartIndex++;
+    }
+
+    let endTime = new Date();
+    console.log(`time used: ${endTime - startTime} ms`);
+    console.log("selection sort finished"); 
+
+    return array;
+}
+
+
+function insertionSort(arr){
+    let array = arr.slice();
+    if (array.length < 2)
+        return array;
+
+    console.log("insertion sort started");
+    let startTime = new Date();
+
+    for (let i = 1; i < array.length; i++){
+        for (let j = i; j > 0; j--){
+            if (array[j] < array[j-1]){
+                swap(array, j, j-1);
+            }
+        }
+    }
+
+    let endTime = new Date();
+    console.log(`time used: ${endTime - startTime} ms`);
+    console.log("insertion sort finished"); 
+
+    return array;
+}
+
+
+function heapSort(arr){
+    let array = arr.slice();
+    if (array.length < 2)
+        return array;
+
+    console.log("heap sort started");
+    let startTime = new Date();
     
 }
+
+
