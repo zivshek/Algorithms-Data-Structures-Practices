@@ -32,26 +32,18 @@ function bubbleSort(arr) {
     if (array.length < 2)
         return array;
     
-    let swapped = false;
-    let currEndIndex = array.length - 1;
+    let swapped;
     let startTime = new Date();
     
-    while (currEndIndex != 1) {
-
+    do {
+        swapped = false;
         for (let i = 0; i < array.length; i++) {
             if (array[i] > array[i + 1]) {
                 swap(array, i, i + 1);
                 swapped = true;
             }
         }
-        
-        // if nothing swapped this round, it means the array is sorted
-        if (!swapped)
-            break;
-        
-        currEndIndex--;
-        swapped = false;
-    }
+    } while (swapped);
     
     let endTime = new Date();
     console.log(`${arguments.callee.name} time used: ${endTime - startTime} ms`);
